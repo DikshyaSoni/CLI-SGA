@@ -1,0 +1,6 @@
+
+1 : Create a directory named documents to store project files inside CLI-SGA/Question2
+
+mkdir documents → creates a new folder named documents.
+
+cd documents → navigates into the documents folder.
