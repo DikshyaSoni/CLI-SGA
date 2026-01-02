@@ -1,0 +1,26 @@
+
+ 5: Check permissions and ownership
+
+    Command: ls -l plan.txt
+ 
+      Output:
+         -rw-r--r-- 1 diksh diksh 26 Jan  2 05:52 plan.txt
+
+ 10: List contents recursively
+
+    Command: ls -R
+    
+    Output:
+
+         .:
+         archive  plan.txt
+
+         ./archive:
+         plan_copy.txt
+
+ 11: Display absolute path of plan_copy.txt
+
+    Command: realpath archive/plan_copy.txt
+
+        Output:
+          /home/diksh/CLI-SGA/Question2/project_documents/archive/plan_copy.txt
