@@ -1,0 +1,82 @@
+1. File Creation Create a file named sample_data.txt in your home directory and add some sample text to it. 
+command:
+
+echo "This is some sample text for testing links." > sample_data.txt
+
+cat sample_data.txt
+
+Explanation :
+
+'echo "text" > sample_data.txt' =  creates the file with sample content.
+ 'cat sample_data.txt' displays the content.
+
+2. Hard Link Creation Create a hard link to sample_data.txt named sample_hard.txt. 
+
+command:
+ln sample_data.txt sample_hard.txt
+
+Explanation : 'ln sample_data.txt sample_hard.txt'  = creates a hard link sharing the same inode.
+
+
+3. Symbolic Link Creation Create a symbolic (soft) link to sample_data.txt named sample_soft.txt. 
+
+command:
+ln -s sample_data.txt sample_soft.txt
+Explanation :
+ 'ln -s sample_data.txt sample_soft.txt'  = creates a symbolic link pointing to the file name.
+
+4. Inode Verification Display the inode numbers of sample_data.txt, sample_hard.txt, and sample_soft.txt.
+
+command:
+ls -i sample_data.txt sample_hard.txt sample_soft.txt
+Explanation :
+   'ls -i'  = shows inode numbers.
+ Hard link shares the same inode; symbolic link has a different inode.
+
+
+ 6. File Metadata Inspection Display detailed file information (permissions, ownership, size, timestamps) of sample_data.txt. 
+
+command:
+ls -l --time-style=full-iso sample_data.txt
+Explanation :
+   'ls -l --time-style=full-iso' =  shows permissions, ownership, size, timestamps.
+
+
+
+ 7. Disk Usage Check Display the disk usage of your home directory in a human-readable format.
+
+command:
+du -sh ~
+Explanation :
+   'du -sh ~'  = displays total disk usage of home in human-readable format.
+
+
+  8. File Size Overview Display the size of each file present in your home directory in a human-readable format. 
+command:
+ls -lh ~
+Explanation :
+
+
+'ls -lh ~'  = lists all files in home with readable sizes.
+
+
+9. Link Deletion Test Delete the symbolic link sample_soft.txt and verify that the original file sample_data.txt is unaffected. 
+
+command:
+rm sample_soft.txt
+ls -l sample_data.txt sample_hard.txt
+Explanation :
+
+'rm sample_soft.txt' = deletes the symbolic link.
+ Original file remains unaffected.
+
+
+10. Disk Utility Demonstration Demonstrate the usage of du and df commands using various useful options and briefly explain the output.
+
+command:
+du -h --max-depth=1 ~
+df -h
+Explanation :
+
+  du -h --max-depth=1 ~ = shows sizes of directories/files.
+df -h  = shows disk usage of mounted filesystems.
