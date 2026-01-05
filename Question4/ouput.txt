@@ -1,0 +1,123 @@
+
+
+1. System Uptime Verification Display the time elapsed since the system was last booted.
+command:
+uptime
+output:
+07:44:09 up 0 min, 1 user, load average: 0.17, 0.06, 0.02
+
+
+2. User Process Listing List all processes currently running under your user account.
+
+command:
+ps -u $USER
+output:
+  PID TTY          TIME CMD
+ 285 pts/0    00:00:00 bash
+ 346 ?        00:00:00 systemd
+ 347 ?        00:00:00 (sd-pam)
+ 373 pts/1    00:00:00 bash
+ 415 pts/0    00:00:00 ps
+
+
+
+
+3. CPU Usage Analysis Identify the process that is consuming the highest CPU usage among your running processes.
+
+command:
+ps -u $USER --sort=-%cpu | head -n 2
+
+output:
+
+  PID TTY          TIME CMD
+ 346 ?        00:00:00 systemd
+
+
+
+4. Background Process Execution Start a command in the background and verify that it is running.
+
+command:
+sleep 300 &
+jobs
+
+output:
+
+[2]+  Running                 sleep 300 &
+
+
+
+5. Process Priority Management Change the priority (niceness) of one of your running processes and display the updated priority.
+
+command:
+renice +5 -p 424
+ps -o pid,ni,cmd -p 424
+
+output:
+
+424 (process ID) old priority 0, new priority 5
+
+  PID  NI CMD
+ 424   5 sleep 300
+
+
+
+6. Memory Usage Monitoring Display memory usage information in a human-readable format.
+command:
+free -h
+
+output:
+               total        used        free      shared  buff/cache   available
+Mem:           3.8Gi       422Mi       3.1Gi       3.5Mi       349Mi       3.3Gi
+Swap:          1.0Gi          0B       1.0Gi
+
+
+7. Disk Space Inspection Display the disk space usage of the filesystem where your home directory resides.
+
+command:
+
+df -h ~
+
+output:
+Filesystem Size Used Avail Use% Mounted on
+ /dev/sdd 1007G 1.6G 955G 1% /
+
+
+
+8. Shell Identification Display the name of the shell currently in use.
+
+command:
+echo $SHELL
+
+output:
+
+/bin/bash
+
+
+
+9. Output Redirection Redirect the output of a system information command of your choice into a file named system_report.txt.
+command:
+uname -a > system_report.txt
+
+output:
+
+No terminal output
+
+ content is saved in system_report.txt
+
+
+
+
+
+10. Disk Usage Visualization Demonstrate the usage of the ncdu tool using appropriate options and briefly explain what it shows.
+
+command:
+
+du -h --max-depth=1 ~
+
+output:
+
+12K /home/diksh/projects_documents
+ 4.0K /home/diksh/.cache 
+820K /home/diksh/CLI-SGA 
+8.0K /home/diksh/CLI-Sga 8
+76K /home/diksh
