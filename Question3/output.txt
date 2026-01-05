@@ -1,0 +1,97 @@
+1. File Creation Create a file named sample_data.txt in your home directory and add some sample text to it. 
+
+command:
+echo "This is some sample text for testing links." > sample_data.txt
+output:
+This is some sample text for testing links.
+
+4. Inode Verification Display the inode numbers of sample_data.txt, sample_hard.txt, and sample_soft.txt.
+
+command:
+ls -i sample_data.txt sample_hard.txt sample_soft.txt
+output:
+46551 sample_data.txt 46551 sample_hard.txt 46553 sample_soft.txt
+
+ 5. Inode Analysis Identify which files share the same inode number and briefly explain the reason.
+analysis:
+sample_data.txt and sample_hard.txt share the same inode because hard links point directly to the same file data.
+
+sample_soft.txt has a different inode because it’s a separate file that stores the path to the original.
+
+
+ 6. File Metadata Inspection Display detailed file information (permissions, ownership, size, timestamps) of sample_data.txt. 
+
+command:
+ls -l --time-style=full-iso sample_data.txt
+output:
+
+-rw-r--r-- 2 diksh diksh 44 2026-01-02 06:52:13.076827208 +0000 sample_data.txt
+
+
+ 7. Disk Usage Check Display the disk usage of your home directory in a human-readable format.
+
+command:
+du -sh ~
+output:
+848K /home/diksh
+
+  8. File Size Overview Display the size of each file present in your home directory in a human-readable format. 
+command:
+ls -lh ~
+output:
+total 12K 
+drwxr-xr-x 6 diksh diksh 4.0K Jan 2 06:51 CLI-SGA 
+drwxr-xr-x 3 diksh diksh 4.0K Jan 1 14:34 CLI-Sga 
+drwxr-xr-x 3 diksh diksh 4.0K Jan 1 15:21 projects_documents
+
+
+
+9. Link Deletion Test Delete the symbolic link sample_soft.txt and verify that the original file sample_data.txt is unaffected. 
+
+command:
+rm sample_soft.txt
+ls -l sample_data.txt sample_hard.txt
+
+output:
+
+-rw-r--r-- 2 diksh diksh 44 Jan 2 06:52 sample_data.txt 
+-rw-r--r-- 2 diksh diksh 44 Jan 2 06:52 sample_hard.txt
+
+
+10. Disk Utility Demonstration Demonstrate the usage of du and df commands using various useful options and briefly explain the output.
+
+command:
+
+du -h --max-depth=1 ~
+
+output:
+
+12K /home/diksh/projects_documents
+ 4.0K /home/diksh/.cache
+  792K /home/diksh/CLI-SGA
+   8.0K /home/diksh/CLI-Sga
+    848K /home/diksh
+
+comamand:
+df -h
+
+output:
+
+Filesystem Size Used Avail Use% Mounted on 
+none 1.9G 0 1.9G 0% /usr/lib/modules/6.6.87.2-microsoft-standard-WSL2
+ none 1.9G 4.0K 1.9G 1% /mnt/wsl 
+ drivers 119G 98G 21G 83% /usr/lib/wsl/drivers 
+ /dev/sdd 1007G 1.6G 955G 1% /
+  none 1.9G 84K 1.9G 1% /mnt/wslg 
+  none 1.9G 0 1.9G 0% /usr/lib/wsl/lib
+   rootfs 1.9G 2.7M 1.9G 1% /init 
+   none 1.9G 484K 1.9G 1% /run
+    none 1.9G 0 1.9G 0% /run/lock 
+    none 1.9G 0 1.9G 0% /run/shm
+     none 1.9G 76K 1.9G 1% /mnt/wslg/versions.txt
+      none 1.9G 76K 1.9G 1% /mnt/wslg/doc
+       C:\ 119G 98G 21G 83% /mnt/c
+        D:\ 264G 445M 264G 1% /mnt/d 
+       E:\ 363G 107M 363G 1% /mnt/e 
+       F:\ 305G 181M 305G 1% /mnt/f 
+       tmpfs 385M 20K 385M 1% /run/user/1000
